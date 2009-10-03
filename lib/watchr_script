@@ -1,0 +1,1 @@
+watch('.*\.js') { |match_data| `jstestdriver --tests all` }

@@ -5,14 +5,14 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "jstdutil"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = "Thin wrapper over Google's JsTestDriver that adds colors and autotest"
+    gem.description = "Thin wrapper over Google's JsTestDriver that adds colors and autotest"
     gem.email = "christian@cjohansen.no"
     gem.homepage = "http://github.com/cjohansen/jstdutil"
     gem.authors = ["Christian Johansen"]
     gem.rubyforge_project = "jstdutil"
     gem.add_development_dependency "thoughtbot-shoulda"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+    gem.add_dependency "watchr"
   end
   Jeweler::GemcutterTasks.new
   Jeweler::RubyforgeTasks.new do |rubyforge|

@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+require "jstdutil"
+require "watchr"
+#require "jstdutil/autotest"
+#JsTestDriver::JsAutoTest::Cli.run($*) if __FILE__ == $0
+
+absolute_path = Pathname(File.join(Jstdutil.install_dir, "watchr_script"))
+Watchr::Controller.new(Watchr::Script.new(absolute_path), Watchr.handler.new).run

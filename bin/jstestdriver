@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+begin
+  require "jstdutil"
+  require "jstdutil/cli"
+rescue LoadError
+  exit
+end
+
+begin
+  $stdout.puts Jstdutil::Cli.run($*) if __FILE__ == $0
+rescue StandardError => err
+  $stderr.puts err.message
+end
