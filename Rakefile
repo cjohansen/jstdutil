@@ -13,6 +13,7 @@ begin
     gem.rubyforge_project = "jstdutil"
     gem.add_development_dependency "thoughtbot-shoulda"
     gem.add_dependency "watchr"
+    gem.add_dependency "rake"
   end
   Jeweler::GemcutterTasks.new
   Jeweler::RubyforgeTasks.new do |rubyforge|
