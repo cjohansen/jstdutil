@@ -2,12 +2,12 @@
 begin
   require "jstdutil"
   require "jstdutil/cli"
-rescue LoadError
+rescue LoadError => err
   exit
 end
 
 begin
-  $stdout.puts Jstdutil::Cli.run($*) if __FILE__ == $0
+  $stdout.puts Jstdutil::Cli.run($*)
 rescue StandardError => err
   $stderr.puts err.message
 end

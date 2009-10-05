@@ -14,6 +14,8 @@ begin
     gem.add_development_dependency "thoughtbot-shoulda"
     gem.add_dependency "watchr"
     gem.add_dependency "rake"
+    gem.executables = ["jstestdriver", "jsautotest"]
+    gem.files = FileList["[A-Z]*", "{bin,generators,lib,test}/**/*"]
   end
   Jeweler::GemcutterTasks.new
   Jeweler::RubyforgeTasks.new do |rubyforge|

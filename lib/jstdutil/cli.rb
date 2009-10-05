@@ -15,6 +15,7 @@ module Jstdutil
     def self.run(args = [])
       args = args.join(" ")
       jar = (args.match(/--jar\s+([^\s]+)/) || [])[1] || Jstdutil.jar
+puts "Using jar: #{jar}"
       Jstdutil::RedGreen.format(Jstdutil.run("#{args.sub(/--jar\s+[^\s]+/, '')}", jar))
     end
   end

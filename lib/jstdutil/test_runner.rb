@@ -1,4 +1,5 @@
-require "jstdutil/jstestdriver_config"
+require "jstdutil/jstestdriver/config"
+require "jstdutil/jstestdriver/server"
 require "jstdutil/cli"
 require "net/http"
 
@@ -8,47 +9,33 @@ module Jstdutil
       @args = strip_opt(args.join(" "), "tests")
       config = @args.scan(/--config\s+([^\s]+)/).flatten
       config = config.first || File.expand_path("jsTestDriver.conf")
+      config = JsTestDriver::Config.new(config)
 
-      begin
-        @server = URI.parse(JsTestDriverConfig.new(config).server)
-        start_server unless server_running?
-      rescue StandardError => err
-        puts err.inspect
-        $stdout.puts("No valid configuration available, skipping server check/startup")
+      if config && config.server
+        @server = JsTestDriver::Server.new(config, args({}, ["port"]).join(" "))
       end
     end
 
-    def test_files(files)
-      file.each do |file|
-        run(TestFile.new(file).test_cases)
-      end
+    def test_cases(files)
+      files = files.respond_to?(:captures) ? files.captures : files
+      files.collect { |file| TestFile.new(file).test_cases }.flatten.join(",")
     end
 
     def run(tests = "all")
-      $stdout.puts(Jstdutil::Cli.run(args("tests" => tests)))
-    end
-
-    def server_running?
-      response = nil
-
       begin
-        Net::HTTP.start(@server.host, @server.port) { |http| response = http.head("/") }
-      rescue Errno::ECONNREFUSED => err
-        return false
+        @server.start unless @server.running?
+      rescue StandardError => err
+        puts err.message
       end
 
-      response.code == "200"
+      puts(Jstdutil::Cli.run(args("tests" => tests)))
     end
 
-    def start_server
-      if !["localhost", "127.0.0.1", "0.0.0.0"].include?(@server.host)
-        $stdout.puts "Unable to start remote server on #{@server.localhost}"
-        return
-      end
-
-      IO.popen("jstestdriver #{args("port" => @server.port).join(' ')}")
+    def finalize
+      @server.stop
     end
 
+   private
     def args(add = {}, remove = [])
       args = @args
       (remove + add.keys).uniq.each { |opt| args = strip_opt(args, opt) }
@@ -56,7 +43,6 @@ module Jstdutil
       args.strip.split(/\s+/)
     end
 
-   private
     def strip_opt(str, opt)
       str.sub(/--#{opt}\s+[^\s]+/, "")
       str
