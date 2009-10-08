@@ -11,6 +11,7 @@ class JstdutilCliTest < Test::Unit::TestCase
         jar = "JsTestDriver.jar"
 
         with_jars(jar) do |dir|
+          puts "#@bin --jar #{File.join(dir, jar)}"
           `#@bin --jar #{File.join(dir, jar)}`
         end
       end
