@@ -1,4 +1,4 @@
-watch('.*\.js') do |match_data|
-  puts $jstestdriver_test_runner.inspect
-  $jstestdriver_test_runner.run($jstestdriver_test_runner.test_cases(match_data))
+watch('(.*\.js)') do |match_data|
+  runner = $jstestdriver_test_runner
+  runner.run(runner.test_cases(match_data))
 end

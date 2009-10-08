@@ -1,6 +1,7 @@
 require "jstdutil/jstestdriver/config"
 require "jstdutil/jstestdriver/server"
 require "jstdutil/cli"
+require "jstdutil/test_file"
 require "net/http"
 
 module Jstdutil
@@ -18,7 +19,9 @@ module Jstdutil
 
     def test_cases(files)
       files = files.respond_to?(:captures) ? files.captures : files
-      files.collect { |file| TestFile.new(file).test_cases }.flatten.join(",")
+      cases = files.collect { |file| TestFile.new(file).test_cases }.flatten.join(",")
+
+      cases == "" && "all" || cases
     end
 
     def run(tests = "all")
@@ -28,6 +31,7 @@ module Jstdutil
         puts err.message
       end
 
+      puts(Time.now.strftime("%F %H:%M:%S Running #{tests}"))
       puts(Jstdutil::Cli.run(args("tests" => tests)))
     end
 

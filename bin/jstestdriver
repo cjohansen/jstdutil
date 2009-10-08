@@ -9,5 +9,5 @@ end
 begin
   $stdout.puts Jstdutil::Cli.run($*)
 rescue StandardError => err
-  $stderr.puts err.message
+  # Swallow...
 end

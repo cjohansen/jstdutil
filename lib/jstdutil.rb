@@ -28,7 +28,11 @@ module Jstdutil
   # Run the jar through the java command
   #
   def self.run(args, jar)
-    `java -jar #{jar} #{args}`
+    begin
+      `java -jar #{jar} #{args}`
+    rescue Error
+      puts "I N T E R R U P T"
+    end
   end
 end
 
