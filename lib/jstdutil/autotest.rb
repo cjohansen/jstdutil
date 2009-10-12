@@ -12,7 +12,7 @@ module Jstdutil
       absolute_path = Pathname(File.join(Jstdutil.install_dir, "watchr_script"))
       script = Watchr::Script.new(absolute_path)
       @watchr_controller = Watchr::Controller.new(script, Watchr.handler.new)
-      @runner = Jstdutil::TestRunner.new
+      @runner = Jstdutil::TestRunner.new(args)
       $jstestdriver_test_runner = @runner
       @interrupted_at = nil
     end

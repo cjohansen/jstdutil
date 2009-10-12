@@ -30,7 +30,7 @@ module Jstdutil
   def self.run(args, jar)
     begin
       `java -jar #{jar} #{args}`
-    rescue Error
+    rescue Exception
       puts "I N T E R R U P T"
     end
   end
