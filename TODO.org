@@ -1,0 +1,7 @@
+#+SEQ_TODO: TODO INPR DONE
+
+* TODO Catch exceptions and quit cleanly
+* TODO Print results from jstestdriver in real-time from jsautotest
+* TODO Don't stop the server if the current instance didn't start it
+* TODO Add some tests to autotest and test runner
+* TODO Catch errors caused by JsTestDriver picking up temp files such as #file.js#
