@@ -7,4 +7,5 @@ begin
 rescue StandardError => err
   puts "An error occurred"
   puts err.message
+  raise err
 end

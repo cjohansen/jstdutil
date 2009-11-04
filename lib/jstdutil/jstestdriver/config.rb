@@ -24,6 +24,11 @@ module Jstdutil
         super
       end
 
+      def respond_to?(name)
+        return true if @contents.key?(name.to_s)
+        super
+      end
+
      private
       def load_config(contents)
         @contents = YAML.load(contents)

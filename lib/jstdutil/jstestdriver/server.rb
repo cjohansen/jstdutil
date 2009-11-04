@@ -7,10 +7,12 @@ module Jstdutil
       attr_reader :uri
 
       def initialize(config, args = nil)
-        @uri = URI.parse(config.respond_to?(:server) ? config.server : config)
+        uri = config.respond_to?(:server) ? config.server : config
+        @uri = URI.parse(uri)
         @args = args
-        # @server = nil
         @pid = nil
+      rescue URI::InvalidURIError => err
+        raise StandardError.new("Invalid test driver server URL #{uri}")
       end
 
       def running?
