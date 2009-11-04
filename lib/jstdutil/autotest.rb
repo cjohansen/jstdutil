@@ -15,6 +15,8 @@ module Jstdutil
       @runner = Jstdutil::TestRunner.new(args)
       $jstestdriver_test_runner = @runner
       @interrupted_at = nil
+    rescue StandardError => err
+      raise err
     end
 
     def run

@@ -2,4 +2,9 @@
 require "jstdutil"
 require "jstdutil/autotest"
 
-Jstdutil::Autotest.new($*).run
+begin
+  Jstdutil::Autotest.new($*).run
+rescue StandardError => err
+  puts "An error occurred"
+  puts err.message
+end

@@ -15,6 +15,8 @@ module Jstdutil
       if config && config.server
         @server = JsTestDriver::Server.new(config, args({}, ["port"]).join(" "))
       end
+    rescue StandardError => err
+      raise err
     end
 
     def test_cases(files)
