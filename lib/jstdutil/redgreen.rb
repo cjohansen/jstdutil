@@ -1,3 +1,9 @@
+begin
+  require 'Win32/Console/ANSI' if PLATFORM =~ /win32/
+rescue LoadError
+  raise 'You must gem install win32console to use color on Windows'
+end
+
 module Jstdutil
   class RedGreen
     # Borrowed from the ruby redgreen gem
