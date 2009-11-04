@@ -1,5 +1,5 @@
 require "test_helper"
-require "jstdutil/jstestdriver_config"
+require "jstdutil/jstestdriver/config"
 
 class JsTestDriverConfigTest < Test::Unit::TestCase
   context "creating JsTestDriverConfig instances" do
@@ -17,7 +17,7 @@ class JsTestDriverConfigTest < Test::Unit::TestCase
       config = nil
 
       assert_nothing_raised do
-        config = Jstdutil::JsTestDriverConfig.new @file
+        config = Jstdutil::JsTestDriver::Config.new @file
       end
 
       assert_equal @server, config.server
@@ -27,7 +27,7 @@ class JsTestDriverConfigTest < Test::Unit::TestCase
       config = nil
 
       assert_nothing_raised do
-        config = Jstdutil::JsTestDriverConfig.new "server: #{@server}"
+        config = Jstdutil::JsTestDriver::Config.new "server: #{@server}"
       end
 
       assert_equal @server, config.server
@@ -35,7 +35,7 @@ class JsTestDriverConfigTest < Test::Unit::TestCase
 
     should "raise error if no valid configuration is provided" do
       assert_raise ArgumentError do
-        Jstdutil::JsTestDriverConfig.new "bogus"
+        Jstdutil::JsTestDriver::Config.new "bogus"
       end
     end
   end

@@ -25,10 +25,14 @@ module Jstdutil
     end
 
     def run(tests = "all")
-      begin
-        @server.start unless @server.running?
-      rescue StandardError => err
-        puts err.message
+      #begin
+      #  @server.start unless @server.running?
+      #rescue StandardError => err
+      #  puts err.message
+      #end
+      if !@server.running?
+        puts "Server not running, you want to start it with jstestdriver --port #{@server.uri.port}"
+        exit
       end
 
       puts(Time.now.strftime("%F %H:%M:%S Running #{tests}"))

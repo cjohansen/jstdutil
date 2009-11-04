@@ -2,6 +2,9 @@ begin
   require 'Win32/Console/ANSI' if PLATFORM =~ /win32/
 rescue LoadError
   raise 'You must gem install win32console to use color on Windows'
+rescue NameError
+  # PLATFORM is not defined, not a problem on windows.
+  # On other platforms we don't care
 end
 
 module Jstdutil

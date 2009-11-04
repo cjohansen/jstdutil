@@ -3,7 +3,7 @@ require 'test/unit'
 require 'shoulda'
 require 'mocha'
 require 'fileutils'
-require 'redgreen'
+require 'redgreen' if RUBY_VERSION < "1.9"
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
