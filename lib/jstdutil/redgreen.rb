@@ -6,7 +6,6 @@ rescue NameError
   # PLATFORM is not defined, not a problem on windows.
   # On other platforms we don't care
 end
-
 module Jstdutil
   class RedGreen
     # Borrowed from the ruby redgreen gem
