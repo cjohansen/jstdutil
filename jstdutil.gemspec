@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Christian Johansen"]
-  s.date = %q{2009-10-12}
+  s.date = %q{2009-10-16}
   s.description = %q{Thin wrapper over Google's JsTestDriver that adds colors and autotest}
   s.email = %q{christian@cjohansen.no}
   s.executables = ["jstestdriver", "jsautotest"]
@@ -49,13 +49,13 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.5}
   s.summary = %q{Thin wrapper over Google's JsTestDriver that adds colors and autotest}
   s.test_files = [
-    "test/jstestdriver_config_test.rb",
+    "test/cli_test.rb",
      "test/jstdutil_test.rb",
+     "test/jstestdriver_config_test.rb",
      "test/jstestdriver_test.rb",
-     "test/test_helper.rb",
-     "test/cli_test.rb",
      "test/redgreen_test.rb",
-     "test/test_file_test.rb"
+     "test/test_file_test.rb",
+     "test/test_helper.rb"
   ]
 
   if s.respond_to? :specification_version then
