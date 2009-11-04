@@ -11,7 +11,7 @@ begin
     gem.homepage = "http://github.com/cjohansen/jstdutil"
     gem.authors = ["Christian Johansen"]
     gem.rubyforge_project = "jstdutil"
-    gem.add_development_dependency "thoughtbot-shoulda"
+    gem.add_development_dependency "shoulda"
     gem.add_dependency "watchr"
     gem.add_dependency "rake"
     gem.executables = ["jstestdriver", "jsautotest"]
@@ -21,8 +21,9 @@ begin
   Jeweler::RubyforgeTasks.new do |rubyforge|
     rubyforge.doc_task = "rdoc"
   end
-rescue LoadError
+rescue LoadError => e
   puts "Jeweler (or a dependency) not available. Install it with: sudo gem install jeweler"
+  puts e.message
 end
 
 require 'rake/testtask'
