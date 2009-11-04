@@ -4,6 +4,8 @@ require "uri"
 module Jstdutil
   module JsTestDriver
     class Server
+      attr_reader :uri
+
       def initialize(config, args = nil)
         uri = config.respond_to?(:server) ? config.server : config
         @uri = URI.parse(uri)
