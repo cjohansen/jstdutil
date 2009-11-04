@@ -29,7 +29,7 @@ module Jstdutil
         @contents = YAML.load(contents)
 
         if !@contents.respond_to?(:key?) || !@contents.key?("server")
-          raise ArgumentError.new("Error: Missing 'server' setting")
+          raise ArgumentError.new("Error: Unable to locate 'server' configuration setting. Did you provide a --config?")
         end
 
         @contents
