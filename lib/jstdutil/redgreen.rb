@@ -28,8 +28,12 @@ module Jstdutil
     # colors. Returns report with encoded colors.
     #
     def self.format(report)
+      return "" if report.nil?
+
       report.split("\n").collect do |line|
-        if line =~ /Passed: \d+; Fails: (\d+); Errors:? (\d+)/
+        if line =~ /Passed: 0; Fails: 0; Errors:? 0/
+          Color.yellow(line)
+        elsif line =~ /Passed: \d+; Fails: (\d+); Errors:? (\d+)/
           Color.send($1.to_i + $2.to_i != 0 ? :red : :green, line)
         elsif line =~ /^[\.EF]+$/
           line.gsub(/\./, Color.green(".")).gsub(/F/, Color.red("F")).gsub("E", Color.yellow("E"))
