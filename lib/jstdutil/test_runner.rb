@@ -8,9 +8,7 @@ module Jstdutil
   class TestRunner
     def initialize(args = [])
       @args = strip_opt(args.join(" "), "tests")
-      config = @args.scan(/--config\s+([^\s]+)/).flatten
-      config = config.first || File.expand_path("jsTestDriver.conf")
-      config = JsTestDriver::Config.new(config)
+      config = guess_config
 
       if config && config.server
         @server = JsTestDriver::Server.new(config, args({}, ["port"]).join(" "))
@@ -46,6 +44,23 @@ module Jstdutil
     end
 
    private
+    def guess_config
+      config = @args.scan(/--config\s+([^\s]+)/).flatten
+      config = config.first || File.expand_path("jsTestDriver.conf")
+
+      if !File.exists?(config)
+        config = Dir.glob("**/jstestdriver*.conf", File::FNM_CASEFOLD)
+        puts "Using config file #{config[0]}" if config.length > 0
+        config = config.length > 0 ? File.expand_path(config[0]) : nil
+      end
+
+      raise ArgumentError.new("Unable to guess JsTestDriver config file, please name it jstestdriver*.conf or provide the --config option") if config.nil?
+
+      @args.sub!(/(--config\s+[^\s]+)?/, "--config #{config}")
+
+      JsTestDriver::Config.new(config)
+    end
+
     def args(add = {}, remove = [])
       args = @args
       (remove + add.keys).uniq.each { |opt| args = strip_opt(args, opt) }
