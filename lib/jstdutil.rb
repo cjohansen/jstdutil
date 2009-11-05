@@ -31,7 +31,6 @@ module Jstdutil
     begin
       `java -jar #{jar} #{args}`
     rescue Exception
-      puts "I N T E R R U P T"
     end
   end
 end
