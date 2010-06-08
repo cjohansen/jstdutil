@@ -1,3 +1,5 @@
+require "yaml"
+
 module Jstdutil
   module JsTestDriver
     # Simple interface to JsTestDriver configuration
