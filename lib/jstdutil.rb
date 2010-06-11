@@ -1,4 +1,6 @@
+require "jstdutil/formatter"
 require "jstdutil/redgreen"
+require "jstdutil/colorful_html"
 #require "jstdutil/autotest"
 
 module Jstdutil
