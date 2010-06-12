@@ -7,7 +7,7 @@ module Jstdutil
     def self.format(report, type)
       return "" if report.nil?
 
-      report.split("\n").collect do |line|
+      type.wrap_report(report.split("\n").collect do |line|
         if line =~ /Passed: 0; Fails: 0; Errors:? 0/
           type::Color.yellow(line)
         elsif line =~ /Passed: \d+; Fails: (\d+); Errors:? (\d+)/
@@ -23,7 +23,7 @@ module Jstdutil
         else
           line
         end
-      end.join("\n")
+      end.join("\n"))
     end
   end
 end

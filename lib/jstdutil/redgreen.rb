@@ -23,5 +23,9 @@ module Jstdutil
       end
     end
 
+    def self.wrap_report(report)
+      report
+    end
+
   end
 end

@@ -8,8 +8,12 @@ module Jstdutil
       end
 
       def self.color(color)
-        "<span style='color: #{color};'>"
+        "<span class='#{color}'>"
       end
+    end
+    
+    def self.wrap_report(report)
+      "<style>.red {color: #c00;} .green {color: #0c0;} .yellow {color: #ff0;} </style><pre>#{report}</pre>"
     end
   
   end
