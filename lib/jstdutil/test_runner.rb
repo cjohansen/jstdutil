@@ -56,7 +56,7 @@ module Jstdutil
 
       raise ArgumentError.new("Unable to guess JsTestDriver config file, please name it jstestdriver*.conf or provide the --config option") if config.nil?
 
-      @args.sub!(/(--config\s+[^\s]+)?/, "--config #{config}")
+      @args.sub!(/(--config\s+[^\s]+)?/, "--config #{config} ")
 
       JsTestDriver::Config.new(config)
     end
