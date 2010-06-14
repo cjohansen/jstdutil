@@ -15,8 +15,9 @@ module Jstdutil
     def self.run(args = [])
       args = args.join(" ")
       jar = (args.match(/--jar\s+([^\s]+)/) || [])[1] || Jstdutil.jar
-
-      Jstdutil::RedGreen.format(Jstdutil.run("#{args.sub(/--jar\s+[^\s]+/, '')}", jar))
+      format_type = args.match(/--html/) ? Jstdutil::ColorfulHtml : Jstdutil::RedGreen;
+      report = Jstdutil.run("#{args.gsub(/(--jar\s+[^\s]+|--html)/, '')}", jar)
+      Jstdutil::Formatter.format(report, format_type)
     end
   end
 end

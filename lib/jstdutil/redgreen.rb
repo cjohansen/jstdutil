@@ -23,30 +23,9 @@ module Jstdutil
       end
     end
 
-    #
-    # Process report from JsTestDriver and colorize it with beautiful
-    # colors. Returns report with encoded colors.
-    #
-    def self.format(report)
-      return "" if report.nil?
-
-      report.split("\n").collect do |line|
-        if line =~ /Passed: 0; Fails: 0; Errors:? 0/
-          Color.yellow(line)
-        elsif line =~ /Passed: \d+; Fails: (\d+); Errors:? (\d+)/
-          Color.send($1.to_i + $2.to_i != 0 ? :red : :green, line)
-        elsif line =~ /^[\.EF]+$/
-          line.gsub(/\./, Color.green(".")).gsub(/F/, Color.red("F")).gsub("E", Color.yellow("E"))
-        elsif line =~ /failed/
-          Color.red(line)
-        elsif line =~ /passed/
-          Color.green(line)
-        elsif line =~ /error/
-          Color.yellow(line)
-        else
-          line
-        end
-      end.join("\n")
+    def self.wrap_report(report)
+      report
     end
+
   end
 end
