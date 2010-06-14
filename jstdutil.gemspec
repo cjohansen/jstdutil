@@ -38,7 +38,6 @@ Gem::Specification.new do |s|
      "lib/jstdutil/test_file.rb",
      "lib/jstdutil/test_runner.rb",
      "lib/watchr_script",
-     "test/#cli_test.rb#",
      "test/cli_test.rb",
      "test/colorful_html_test.rb",
      "test/formatter_test.rb",
