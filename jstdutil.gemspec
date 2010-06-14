@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{jstdutil}
-  s.version = "0.1.1"
+  s.version = "0.1.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Christian Johansen"]
-  s.date = %q{2009-11-10}
+  s.date = %q{2010-06-08}
   s.description = %q{Thin wrapper over Google's JsTestDriver that adds colors and autotest}
   s.email = %q{christian@cjohansen.no}
   s.executables = ["jstestdriver", "jsautotest"]
@@ -47,16 +47,16 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{jstdutil}
-  s.rubygems_version = %q{1.3.5}
+  s.rubygems_version = %q{1.3.6}
   s.summary = %q{Thin wrapper over Google's JsTestDriver that adds colors and autotest}
   s.test_files = [
-    "test/cli_test.rb",
-     "test/jstdutil_test.rb",
-     "test/jstestdriver_config_test.rb",
-     "test/jstestdriver_test.rb",
-     "test/redgreen_test.rb",
+    "test/jstestdriver_test.rb",
+     "test/cli_test.rb",
      "test/test_file_test.rb",
-     "test/test_helper.rb"
+     "test/redgreen_test.rb",
+     "test/test_helper.rb",
+     "test/jstdutil_test.rb",
+     "test/jstestdriver_config_test.rb"
   ]
 
   if s.respond_to? :specification_version then
