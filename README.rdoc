@@ -1,7 +1,5 @@
 = jstdutil
 
-Description goes here.
-
 == Note on Patches/Merge Requests
  
 * Fork the project.
