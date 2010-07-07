@@ -24,7 +24,7 @@ module Jstdutil
       return @cases if @cases
 
       @cases = test_files.collect do |file|
-        File.read(file).scan(/TestCase\(["']([^"']*)/)
+        File.read(file).scan(/estCase\(["']([^"']*)/)
       end
 
       @cases.flatten!

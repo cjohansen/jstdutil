@@ -1,3 +1,7 @@
+== 0.2.1 / 2010-07-07
+* jsautotest should find test cases in both TestCase and testCase to
+  allow custom testCase methods
+
 == 0.2.0 / 2010-06-14
 * HTML output with --html, courtesy of http://github.com/magnars
 * Fix bug where --config option was not automatically added to
