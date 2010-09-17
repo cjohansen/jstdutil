@@ -1,3 +1,6 @@
+== 0.2.2 / 2010-09-17
+* Escape config path to avoid trouble with paths with spaces
+
 == 0.2.1 / 2010-07-07
 * jsautotest should find test cases in both TestCase and testCase to
   allow custom testCase methods
