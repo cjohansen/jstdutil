@@ -1,5 +1,4 @@
 require "jstdutil/jstestdriver/config"
-require "jstdutil/jstestdriver/server"
 require "jstdutil/cli"
 require "jstdutil/test_file"
 require "net/http"
@@ -9,10 +8,6 @@ module Jstdutil
     def initialize(args = [])
       @args = strip_opt(args.join(" "), "tests")
       config = guess_config
-
-      if config && config.server
-        @server = JsTestDriver::Server.new(config, args({}, ["port"]).join(" "))
-      end
     rescue StandardError => err
       raise err
     end
@@ -35,7 +30,6 @@ module Jstdutil
     end
 
     def finalize
-      @server.stop
     end
 
    private
