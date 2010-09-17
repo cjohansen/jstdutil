@@ -1,3 +1,5 @@
+require "jstdutil"
+
 module Jstdutil
   #
   # <tt>Jstdutil::Cli</tt> is a tiny wrapper to the JsTestDriver
@@ -15,7 +17,7 @@ module Jstdutil
     def self.run(args = [])
       args = args.join(" ")
       jar = (args.match(/--jar\s+([^\s]+)/) || [])[1] || Jstdutil.jar
-      format_type = args.match(/--html/) ? Jstdutil::ColorfulHtml : Jstdutil::RedGreen;
+      format_type = args.match(/--html/) ? Jstdutil::ColorfulHtml : Jstdutil::RedGreen
       report = Jstdutil.run("#{args.gsub(/(--jar\s+[^\s]+|--html)/, '')}", jar)
       Jstdutil::Formatter.format(report, format_type)
     end

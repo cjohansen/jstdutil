@@ -32,7 +32,7 @@ module Jstdutil
   def self.run(args, jar)
     begin
       `java -jar #{jar} #{args}`
-    rescue Exception
+    rescue Exception => err
     end
   end
 end

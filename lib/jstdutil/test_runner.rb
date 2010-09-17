@@ -19,22 +19,17 @@ module Jstdutil
 
     def test_cases(files)
       files = files.respond_to?(:captures) ? files.captures : files
-      cases = files.collect { |file| TestFile.new(file).test_cases }.flatten.join(",")
+      @args = @args.sub(/--reset\s*/, "")
 
+      cases = files.collect do |file|
+        @args = @args.sub(/(\s*--reset)?$/, " --reset") if file !~ /_test\.js$/
+        TestFile.new(file).test_cases
+      end.flatten.join(",")
+      
       cases == "" && "all" || cases
     end
 
     def run(tests = "all")
-      #begin
-      #  @server.start unless @server.running?
-      #rescue StandardError => err
-      #  puts err.message
-      #end
-      if !@server.running?
-        puts "Server not running, you want to start it with jstestdriver --port #{@server.uri.port}"
-        exit
-      end
-
       puts(Time.now.strftime("%F %H:%M:%S Running #{tests}"))
       puts(Jstdutil::Cli.run(args("tests" => tests)))
     end

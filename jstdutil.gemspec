@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{jstdutil}
-  s.version = "0.2.2"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Christian Johansen"]
-  s.date = %q{2010-09-17}
+  s.date = %q{2010-09-18}
   s.description = %q{Thin wrapper over Google's JsTestDriver that adds colors and autotest}
   s.email = %q{christian@cjohansen.no}
   s.executables = ["jstestdriver", "jsautotest"]
@@ -33,7 +33,6 @@ Gem::Specification.new do |s|
      "lib/jstdutil/formatter.rb",
      "lib/jstdutil/hooks.rb",
      "lib/jstdutil/jstestdriver/config.rb",
-     "lib/jstdutil/jstestdriver/server.rb",
      "lib/jstdutil/redgreen.rb",
      "lib/jstdutil/test_file.rb",
      "lib/jstdutil/test_runner.rb",
