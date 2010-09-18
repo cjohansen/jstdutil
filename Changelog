@@ -1,3 +1,6 @@
+== 0.3.2 / 2010-09-18
+* Make sure --port still works
+
 == 0.3.1 / 2010-09-17
 * Let's properly remove that server shall we
 

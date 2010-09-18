@@ -1,13 +1,18 @@
 #!/usr/bin/env ruby
 begin
   require "jstdutil"
-  require "jstdutil/test_runner"
+  require "jstdutil/cli"
+    require "jstdutil/test_runner"
 rescue LoadError => err
   exit
 end
 
 begin
-  $stdout.puts Jstdutil::TestRunner.new($*).run()
+  if $*.join(" ") =~ /--port/
+    $stdout.puts Jstdutil::Cli.run($*)
+  else
+    $stdout.puts Jstdutil::TestRunner.new($*).run()
+  end
 rescue StandardError => err
   puts err.message
   # Swallow...
