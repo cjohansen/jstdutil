@@ -1,3 +1,6 @@
+== 0.3.3 / 2010-10-16
+* Remove "clever" argument handling
+
 == 0.3.2 / 2010-09-18
 * Make sure --port still works
 

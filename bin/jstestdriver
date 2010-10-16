@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
 begin
   require "jstdutil"
   require "jstdutil/cli"
@@ -8,12 +9,7 @@ rescue LoadError => err
 end
 
 begin
-  if $*.join(" ") =~ /--port/
-    $stdout.puts Jstdutil::Cli.run($*)
-  else
-    $stdout.puts Jstdutil::TestRunner.new($*).run()
-  end
+  $stdout.puts Jstdutil::Cli.run($*)
 rescue StandardError => err
-  puts err.message
-  # Swallow...
+  puts err.message if $*.join(" ") =~ /(^|\s)-v(\s|$)/
 end
