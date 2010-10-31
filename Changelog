@@ -1,3 +1,7 @@
+== 0.3.5 / 2010-10-31
+* Bright colors that work on Windows
+* Autotest no longer initially runs all tests
+
 == 0.3.4 / 2010-10-31
 * Xavier Vergés helped improve Windows support
 * Proper Windows platform detection for ANSI colors
