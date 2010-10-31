@@ -1,3 +1,10 @@
+== 0.3.4 / 2010-10-31
+* Xavier Vergés helped improve Windows support
+* Proper Windows platform detection for ANSI colors
+  (ideas from Matt Mower <self@mattmower.com>)
+* Brighter colors
+* JSTESTDRIVER_HOME is properly set on Windows
+
 == 0.3.3 / 2010-10-16
 * Remove "clever" argument handling
 
