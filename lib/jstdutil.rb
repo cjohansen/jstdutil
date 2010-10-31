@@ -14,7 +14,8 @@ module Jstdutil
   # Also checks current working directory
   #
   def self.jar(classpath = ENV["JSTESTDRIVER_HOME"] || Dir.pwd)
-    files = Dir.glob(File.join(classpath, 'jstest*.jar'), File::FNM_CASEFOLD)
+    files = Dir.glob(File.expand_path(File.join(classpath, 'jstest*.jar')),
+                     File::FNM_CASEFOLD)
     files.sort! { |f1, f2| f1.downcase <=> f2.downcase }
 
     if !files || !files.first
