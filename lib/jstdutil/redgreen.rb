@@ -12,10 +12,10 @@ module Jstdutil
     # Not included as a gem dependency since it drags in Test::Unit
     # and friends, which is overkill for our situation
     module Color
-      COLORS = { :clear => 0, :red => 91, :green => 92, :yellow => 93 }
+      COLORS = { :clear => 0, :bright => 1, :red => 31, :green => 32, :yellow => 33 }
 
       def self.method_missing(color_name, *args)
-        color(color_name) + args.first + color(:clear)
+        color(:bright) + color(color_name) + args.first + color(:clear)
       end
 
       def self.color(color)
