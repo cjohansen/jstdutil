@@ -6,13 +6,14 @@ rescue NameError
   # PLATFORM is not defined, not a problem on windows.
   # On other platforms we don't care
 end
+
 module Jstdutil
   class RedGreen
     # Borrowed from the ruby redgreen gem
     # Not included as a gem dependency since it drags in Test::Unit
     # and friends, which is overkill for our situation
     module Color
-      COLORS = { :clear => 0, :red => 31, :green => 32, :yellow => 33 }
+      COLORS = { :clear => 0, :red => 91, :green => 92, :yellow => 93 }
 
       def self.method_missing(color_name, *args)
         color(color_name) + args.first + color(:clear)
