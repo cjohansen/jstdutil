@@ -12,11 +12,11 @@ module Jstdutil
     def test_files
       return @test_files if @test_files
 
-      if @file =~ /(_test[^\/]+)|([^\/]+_test)\.js/
+      if @file =~ /([-_]test[^\/]+)|([^\/]+[-_]test)\.js/
         @test_files = [@file]
       else
-        name = File.basename(@file).gsub(/(_test)|(test_)|(\.js)/, "")
-        @test_files = FileList["**/#{name}_test.js", "**/test_#{name}.js"].uniq
+        name = File.basename(@file).gsub(/([-_]test)|(test[-_])|(\.js)/, "")
+        @test_files = FileList["**/#{name}_test.js", "**/test_#{name}.js", "**/#{name}-test.js", "**/test-#{name}.js"].uniq
       end
     end
 
