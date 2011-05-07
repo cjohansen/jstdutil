@@ -14,7 +14,7 @@ class TestFileTest < Test::Unit::TestCase
     should "find files like _test.js" do
       file = "some.js"
       test_file = Jstdutil::TestFile.new(file)
-      FileList.expects(:new).with("**/some_test.js", "**/test_some.js").returns([])
+      FileList.expects(:new).with("**/some_test.js", "**/test_some.js", "**/some-test.js", "**/test-some.js").returns([])
 
       assert test_file.test_files
     end
