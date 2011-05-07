@@ -1,3 +1,8 @@
+== 0.3.6 / 2011-05-07
+* Work around broken utf-8 output from jstestdriver (skip formatting)
+  Thanks to Thomas Pickert
+* jsautotest now finds files like -test.js as well as _test.js
+
 == 0.3.5 / 2010-10-31
 * Bright colors that work on Windows
 * Autotest no longer initially runs all tests
