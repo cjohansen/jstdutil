@@ -13,3 +13,9 @@ begin
 rescue StandardError => err
   puts err.message if $*.join(" ") =~ /(^|\s)-v(\s|$)/
 end
+
+if defined? $exit_status
+  # simple passing $exit_status to exit does not work. Java returns a code of 256.
+  # But 256 is not recognized as an error code by Kernel.exit
+  exit 37 if $exit_status != 0
+end
