@@ -1,3 +1,6 @@
+== 0.3.7 / 2011-05-17
+* Proper exit code from jstestdriver (Vladimir Dobriakov)
+
 == 0.3.6 / 2011-05-07
 * Work around broken utf-8 output from jstestdriver (skip formatting)
   Thanks to Thomas Pickert
