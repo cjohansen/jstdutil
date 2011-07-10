@@ -32,10 +32,13 @@ module Jstdutil
   #
   def self.run(args, jar)
     begin
-      res = `java -jar #{jar} #{args}`
+      res = `javad -jar #{jar} #{args}`
       $exit_status = $?
       return res
     rescue Exception => err
+      puts "Unable to run java command. This probably means java is not available " +
+        "on your path. Original error was"
+      puts err.message
     end
   end
 end
