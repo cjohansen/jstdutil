@@ -32,7 +32,7 @@ module Jstdutil
   #
   def self.run(args, jar)
     begin
-      res = `javad -jar #{jar} #{args}`
+      res = `java -jar #{jar} #{args}`
       $exit_status = $?
       return res
     rescue Exception => err
