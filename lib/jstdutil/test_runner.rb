@@ -18,8 +18,9 @@ module Jstdutil
 
       cases = files.collect do |file|
         @args = @args.sub(/(\s*--reset)?$/, " --reset") if file !~ /_test\.js$/
+
         TestFile.new(file).test_cases
-      end.flatten.join(",")
+      end.flatten.map { |tc| tc.index(" ").nil? ? tc : "\"#{tc}\"" }.join(",")
       
       cases == "" && "all" || cases
     end
