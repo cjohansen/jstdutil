@@ -14,7 +14,15 @@ class TestFileTest < Test::Unit::TestCase
     should "find files like _test.js" do
       file = "some.js"
       test_file = Jstdutil::TestFile.new(file)
-      FileList.expects(:new).with("**/some_test.js", "**/test_some.js").returns([])
+      FileList.expects(:new).with("**/some_test.js", "**/test_some.js", "**/someTest.js").returns([])
+
+      assert test_file.test_files
+    end
+
+    should "find camelized file names" do
+      file = "some_thing.js"
+      test_file = Jstdutil::TestFile.new(file)
+      FileList.expects(:new).with("**/some_thing_test.js", "**/test_some_thing.js", "**/someThingTest.js").returns([])
 
       assert test_file.test_files
     end

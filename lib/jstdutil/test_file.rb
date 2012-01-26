@@ -16,7 +16,7 @@ module Jstdutil
         @test_files = [@file]
       else
         name = File.basename(@file).gsub(/(_test)|(test_)|(\.js)/, "")
-        @test_files = FileList["**/#{name}_test.js", "**/test_#{name}.js"].uniq
+        @test_files = FileList["**/#{name}_test.js", "**/test_#{name}.js", "**/#{camelize(name)}Test.js"].uniq
       end
     end
 
@@ -28,6 +28,12 @@ module Jstdutil
       end
 
       @cases.flatten!
+    end
+
+    private
+    def camelize(str)
+      pieces = str.split(/[^a-z0-9]/i)
+      pieces.shift + pieces.map { |w| w.capitalize }.join
     end
   end
 end
