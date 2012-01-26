@@ -11,6 +11,20 @@ class TestFileTest < Test::Unit::TestCase
       assert_equal [file], test_file.test_files
     end
 
+    should "be file itself if name is like -test.js" do
+      file = "some-test.js"
+      test_file = Jstdutil::TestFile.new(file)
+
+      assert_equal [file], test_file.test_files
+    end
+
+    should "be file itself if name is like abcTest.js" do
+      file = "someThingTest.js"
+      test_file = Jstdutil::TestFile.new(file)
+
+      assert_equal [file], test_file.test_files
+    end
+
     should "find files like _test.js" do
       file = "some.js"
       test_file = Jstdutil::TestFile.new(file)

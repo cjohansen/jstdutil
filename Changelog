@@ -1,3 +1,6 @@
+== 0.3.12 / 2012-01-26
+* Recognize camelized file names always...
+
 == 0.3.11 / 2012-01-26
 * Recognize camelized file names (i.e. some.js -> someTest.js)
 

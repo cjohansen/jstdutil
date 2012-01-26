@@ -12,7 +12,7 @@ module Jstdutil
     def test_files
       return @test_files if @test_files
 
-      if @file =~ /([-_]test[^\/]+)|([^\/]+[-_]test)\.js/
+      if @file =~ /([-_]test[^\/]+)|([^\/]+[-_]test)|(Test)\.js/
         @test_files = [@file]
       else
         name = File.basename(@file).gsub(/([-_]test)|(test[-_])|(\.js)/, "")
