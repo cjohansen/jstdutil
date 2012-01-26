@@ -18,7 +18,7 @@ class JstdutilCliTest < Test::Unit::TestCase
         end
       end
 
-      assert_equal "\n", stdout
+      assert_match /^\n?$/, stdout
     end
   end
 end

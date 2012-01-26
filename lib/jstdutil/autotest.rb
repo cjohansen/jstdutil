@@ -34,7 +34,6 @@ module Jstdutil
         end
       end
 
-      @runner.run
       @watchr_controller.run
     end
   end

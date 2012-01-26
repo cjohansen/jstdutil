@@ -1,5 +1,4 @@
 require "jstdutil/jstestdriver/config"
-require "jstdutil/jstestdriver/server"
 require "jstdutil/cli"
 require "jstdutil/test_file"
 require "net/http"
@@ -9,38 +8,29 @@ module Jstdutil
     def initialize(args = [])
       @args = strip_opt(args.join(" "), "tests")
       config = guess_config
-
-      if config && config.server
-        @server = JsTestDriver::Server.new(config, args({}, ["port"]).join(" "))
-      end
     rescue StandardError => err
       raise err
     end
 
     def test_cases(files)
       files = files.respond_to?(:captures) ? files.captures : files
-      cases = files.collect { |file| TestFile.new(file).test_cases }.flatten.join(",")
+      @args = @args.sub(/--reset\s*/, "")
+
+      cases = files.collect do |file|
+        @args = @args.sub(/(\s*--reset)?$/, " --reset") if file !~ /_test\.js$/
+
+        TestFile.new(file).test_cases
+      end.flatten.reject { |tc| tc.nil? }.map { |tc| tc.index(" ").nil? ? tc : "\"#{tc}\"" }.join(",")
 
       cases == "" && "all" || cases
     end
 
     def run(tests = "all")
-      #begin
-      #  @server.start unless @server.running?
-      #rescue StandardError => err
-      #  puts err.message
-      #end
-      if !@server.running?
-        puts "Server not running, you want to start it with jstestdriver --port #{@server.uri.port}"
-        exit
-      end
-
       puts(Time.now.strftime("%F %H:%M:%S Running #{tests}"))
       puts(Jstdutil::Cli.run(args("tests" => tests)))
     end
 
     def finalize
-      @server.stop
     end
 
    private
@@ -56,7 +46,7 @@ module Jstdutil
 
       raise ArgumentError.new("Unable to guess JsTestDriver config file, please name it jstestdriver*.conf or provide the --config option") if config.nil?
 
-      @args.sub!(/(--config\s+[^\s]+)?/, "--config #{config}")
+      @args.sub!(/(--config\s+[^\s]+)?/, "--config \"#{config}\" ")
 
       JsTestDriver::Config.new(config)
     end

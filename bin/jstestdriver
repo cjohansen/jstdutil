@@ -1,7 +1,9 @@
 #!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
 begin
   require "jstdutil"
   require "jstdutil/cli"
+    require "jstdutil/test_runner"
 rescue LoadError => err
   exit
 end
@@ -9,5 +11,11 @@ end
 begin
   $stdout.puts Jstdutil::Cli.run($*)
 rescue StandardError => err
-  # Swallow...
+  puts err.message if $*.join(" ") =~ /(^|\s)-v(\s|$)/
+end
+
+if defined? $exit_status
+  # simple passing $exit_status to exit does not work. Java returns a code of 256.
+  # But 256 is not recognized as an error code by Kernel.exit
+  exit 37 if $exit_status != 0
 end

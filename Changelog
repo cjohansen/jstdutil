@@ -1,0 +1,44 @@
+== 0.3.7 / 2011-05-17
+* Proper exit code from jstestdriver (Vladimir Dobriakov)
+
+== 0.3.6 / 2011-05-07
+* Work around broken utf-8 output from jstestdriver (skip formatting)
+  Thanks to Thomas Pickert
+* jsautotest now finds files like -test.js as well as _test.js
+
+== 0.3.5 / 2010-10-31
+* Bright colors that work on Windows
+* Autotest no longer initially runs all tests
+
+== 0.3.4 / 2010-10-31
+* Xavier Vergés helped improve Windows support
+* Proper Windows platform detection for ANSI colors
+  (ideas from Matt Mower <self@mattmower.com>)
+* Brighter colors
+* JSTESTDRIVER_HOME is properly set on Windows
+
+== 0.3.3 / 2010-10-16
+* Remove "clever" argument handling
+
+== 0.3.2 / 2010-09-18
+* Make sure --port still works
+
+== 0.3.1 / 2010-09-17
+* Let's properly remove that server shall we
+
+== 0.3.0 / 2010-09-17
+* Add --reset when changing source files
+* No --reset when changing test files
+* No server sniffing - much faster
+
+== 0.2.2 / 2010-09-17
+* Escape config path to avoid trouble with paths with spaces
+
+== 0.2.1 / 2010-07-07
+* jsautotest should find test cases in both TestCase and testCase to
+  allow custom testCase methods
+
+== 0.2.0 / 2010-06-14
+* HTML output with --html, courtesy of http://github.com/magnars
+* Fix bug where --config option was not automatically added to
+  jsautotest --reset
