@@ -10,6 +10,9 @@ Total 3 tests (Passed: 1; Fails: 1; Errors: 1) (2.00 ms)
     GreeterTest.testSomethingElse failed (1.00 ms): expected "1" but was "2"
     ()@http://localhost:4224/test/test/greeter_test.js:10
       [LOG] UH!
+      [INFO] UH!
+      [ERROR] UH!
+      [WARN] MAYBE UH!
     GreeterTest.testSomethingElseFails error (1.00 ms): assertEqual is not defined
     ()@http://localhost:4224/test/test/greeter_test.js:14
       REPORT
@@ -35,8 +38,11 @@ Total 3 tests (Passed: 1; Fails: 1; Errors: 1) (2.00 ms)
     expected << type::Color.red(lines[3]) + "\n"
     expected << lines[4] + "\n"
     expected << lines[5] + "\n"
-    expected << type::Color.yellow(lines[6]) + "\n"
-    expected << lines[7]
+    expected << lines[6] + "\n"
+    expected << type::Color.red(lines[7]) + "\n"
+    expected << type::Color.yellow(lines[8]) + "\n"
+    expected << type::Color.yellow(lines[9]) + "\n"
+    expected << lines[10]
 
     expected = type.wrap_report(expected)
 
