@@ -15,11 +15,11 @@ module Jstdutil
             type::Color.send($1.to_i + $2.to_i != 0 ? :red : :green, line)
           elsif line =~ /^[\.EF]+$/
             line.gsub(/\./, type::Color.green(".")).gsub(/F/, type::Color.red("F")).gsub("E", type::Color.yellow("E"))
-          elsif line =~ /failed/
+          elsif line =~ /failed\s\(\d|\[ERROR\]/
             type::Color.red(line)
-          elsif line =~ /passed/
+          elsif line =~ /passed\s\(\d/
             type::Color.green(line)
-          elsif line =~ /error/
+          elsif line =~ /error|\[WARN\]/
             type::Color.yellow(line)
           else
             line
