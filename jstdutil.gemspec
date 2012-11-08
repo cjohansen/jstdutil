@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{jstdutil}
-  s.version = "0.3.10"
+  s.version = "0.3.11"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Christian Johansen"]
@@ -83,4 +83,3 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<rake>, [">= 0"])
   end
 end
-
